@@ -28,9 +28,9 @@ class ThemeRepository implements ThemePersistence {
       _sharedPreferences.setString(key, value);
 
   void _init() {
-    final themeJson = _getValue(_kThemePersistenceKey);
-    if (themeJson != null) {
-      if (themeJson == CustomTheme.light.name) {
+    final themeString = _getValue(_kThemePersistenceKey);
+    if (themeString != null) {
+      if (themeString == CustomTheme.light.name) {
         _controller.add(CustomTheme.light);
       } else {
         _controller.add(CustomTheme.dark);
