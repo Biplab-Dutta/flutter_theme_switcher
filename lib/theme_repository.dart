@@ -22,7 +22,13 @@ class ThemeRepository implements ThemePersistence {
 
   final _controller = StreamController<CustomTheme>();
 
-  String? _getValue(String key) => _sharedPreferences.getString(key);
+  String? _getValue(String key) {
+    try {
+      return _sharedPreferences.getString(key);
+    } catch (_) {
+      return null;
+    }
+  }
 
   Future<void> _setValue(String key, String value) =>
       _sharedPreferences.setString(key, value);
