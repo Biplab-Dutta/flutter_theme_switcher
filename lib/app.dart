@@ -34,11 +34,9 @@ class AppView extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          theme: state.theme,
-          darkTheme: state.theme,
-          themeMode: state.theme == AppTheme.darkTheme
-              ? ThemeMode.dark
-              : ThemeMode.light,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: state.themeMode,
           home: const HomePage(),
         );
       },

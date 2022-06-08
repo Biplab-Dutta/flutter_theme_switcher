@@ -4,7 +4,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:theme_switching_demo/theme_repository.dart';
-import 'package:theme_switching_demo/themes.dart';
 
 part 'theme_state.dart';
 
@@ -12,7 +11,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   ThemeCubit({
     required ThemeRepository themeRepository,
   })  : _themeRepository = themeRepository,
-        super(ThemeState(theme: AppTheme.lightTheme));
+        super(const ThemeState());
 
   final ThemeRepository _themeRepository;
   late StreamSubscription<CustomTheme> _themeSubscription;
@@ -23,10 +22,10 @@ class ThemeCubit extends Cubit<ThemeState> {
       (customTheme) {
         if (customTheme.name == CustomTheme.light.name) {
           _isDarkTheme = false;
-          emit(state.copyWith(theme: AppTheme.lightTheme));
+          emit(state.copyWith(themeMode: ThemeMode.light));
         } else {
           _isDarkTheme = true;
-          emit(state.copyWith(theme: AppTheme.darkTheme));
+          emit(state.copyWith(themeMode: ThemeMode.dark));
         }
       },
     );
