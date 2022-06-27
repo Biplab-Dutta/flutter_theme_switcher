@@ -18,7 +18,7 @@ abstract class AppTheme {
 
   static ThemeData get darkTheme => ThemeData(
         scaffoldBackgroundColor: Colors.blueGrey.shade800,
-        textTheme: ThemeData.light().textTheme.copyWith(
+        textTheme: ThemeData.dark().textTheme.copyWith(
               bodyText1: const TextStyle(
                 fontSize: 25,
                 color: Colors.white,

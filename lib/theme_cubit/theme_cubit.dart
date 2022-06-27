@@ -9,15 +9,15 @@ part 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
   ThemeCubit({
-    required ThemeRepository themeRepository,
+    required ThemePersistence themeRepository,
   })  : _themeRepository = themeRepository,
         super(const ThemeState());
 
-  final ThemeRepository _themeRepository;
+  final ThemePersistence _themeRepository;
   late StreamSubscription<CustomTheme> _themeSubscription;
   static late bool _isDarkTheme;
 
-  Future<void> getCurrentTheme() async {
+  void getCurrentTheme() {
     _themeSubscription = _themeRepository.getTheme().listen(
       (customTheme) {
         if (customTheme.name == CustomTheme.light.name) {

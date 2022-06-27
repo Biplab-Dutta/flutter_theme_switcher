@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 abstract class ThemePersistence {
   Stream<CustomTheme> getTheme();
   Future<void> saveTheme(CustomTheme theme);
+  void dispose();
 }
 
 enum CustomTheme { light, dark }
@@ -47,9 +48,7 @@ class ThemeRepository implements ThemePersistence {
   }
 
   @override
-  Stream<CustomTheme> getTheme() async* {
-    yield* _controller.stream;
-  }
+  Stream<CustomTheme> getTheme() => _controller.stream;
 
   @override
   Future<void> saveTheme(CustomTheme theme) {
@@ -57,5 +56,6 @@ class ThemeRepository implements ThemePersistence {
     return _setValue(_kThemePersistenceKey, theme.name);
   }
 
+  @override
   void dispose() => _controller.close();
 }
