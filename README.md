@@ -1,1 +1,1 @@
-# [Blogs Link](https://biplabdutta.com.np/posts/theme-switching/)
+# [Blog Link](https://biplabdutta.com.np/posts/theme-switching/)
